@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Music Player</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
+		<style type="text/css">
+			body,div,h2,p,audio{ margin: 0; padding: 0; }
+			body{
+				font-family: 'Poppins', sans-serif;
+				height: 100vh;
+				color: #fff;
+			}
+			.wrapper{
+				height: 100%;
+				background: rgb(124, 5, 83);
+				background: linear-gradient(0deg, rgba(124,5,83,1) 0%, rgba(80,17,59,1) 32%, rgba(14,0,11,1) 100%);
+				display: flex; justify-content: center; align-items: center;
+				user-select: none; /* drag안되게 */
+			}
+			.play-body{
+				width: 380px;
+				padding: 25px 30px;
+				background: rgba(255,255,255,0.3); box-shadow: 3px 4px 8px 0 rgba(0,0,0,0.2);
+				border-radius: 15px;
+			}
+			.m-top{ margin-bottom: 25px; }
+			.m-top>h2{
+				font-size: 30px; font-weight: 700;
+				text-align: center;
+				color: transparent;
+				background: rgb(160,201,223);
+				background: linear-gradient(180deg, rgba(160,201,223,1) 0%, rgba(174,190,231,1) 47%, rgba(201,155,232,1) 100%);
+				background-clip: text; -webkit-background-clip: text;
+			}
+			.m-img{
+				width: 100%; height: 260px;
+				border-radius: 15px; overflow: hidden;
+			}
+			.m-img>img{ width: 100%; height: 100%; object-fit: cover; }
+			.m-info{
+				margin: 30px;
+				font-size: 20px; text-align: center;
+			}
+			.m-info>.name{ font-weight: 500; }
+			.m-info>.artist{
+				font-size: 14px; font-weight: 300;
+				color: rgba(255,255,255,0.6);
+				margin-top: 5px;
+			}
+			.m-progress{
+				width: 100%; height: 6px;
+				border-radius: 3px;
+				background: rgba(255,255,255,0.4);
+			}
+			.m-progress>.bar{
+				width: 10%; height: inherit;
+				border-radius: inherit;
+				background: #fff;
+			}
+			.m-progress>.timer{
+				margin-top: 5px;
+				display: flex; justify-content: space-between;
+				font-size: 14px;
+			}
+			.m-control{
+				margin-top: 40px;
+				display: flex; justify-content: space-between; align-items: center;
+			}
+			.m-control>span{
+				font-size: 32px; color: transparent;
+				background: rgb(124, 5, 83);
+				background: linear-gradient(180deg, rgba(124,5,83,1) 0%, rgba(80,17,59,1) 32%, rgba(14,0,11,1) 100%);
+				background-clip: text; -webkit-background-clip: text;
+			}
+			.m-control .play-pause{
+				width: 54px; height: 54px;
+				background: rgb(124, 5, 83);
+				background: linear-gradient(180deg, rgba(124,5,83,0.7) 0%, rgba(80,17,59,0.7) 32%, rgba(14,0,11,0.7) 100%);
+				border-radius: 50%;
+				display: flex; justify-content: center; align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="play-body">
+				<div class="m-top">
+					<h2>Music Player</h2>
+				</div>
+				<div class="m-img">
+					<img src="images/album1.jpg" alt="앨범1">
+				</div>
+				<div class="m-info">
+					<p class="name">Alone</p>
+					<p class="artist">Color Out</p>
+				</div>
+				<div class="m-progress">
+					<div class="bar">
+						<audio src="songs/Alone.mp3" id="main-audio"></audio>
+					</div>
+					<div class="timer">
+						<span class="current">0:00</span>
+						<span class="duration">0:00</span>
+					</div>
+				</div>
+				<div class="m-control">
+					<span id="repeat-btn" class="material-icons">repeat</span>
+					<span id="prev-btn" class="material-icons">skip_previous</span>
+					<div class="play-pause">
+						<span id="play-btn" class="material-icons">play_arrow</span><!-- pause와 change -->
+					</div>
+					<span id="next-btn" class="material-icons">skip_next</span>
+					<span id="list-btn" class="material-icons">queue_music</span>
+				</div>
+			</div>
+		</div>
+		<script>
+
+		</script>
+	</body>
+</html>
