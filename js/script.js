@@ -84,6 +84,6 @@ progress.addEventListener('click',(e)=>{
 	playMusic();
 });
 musicAudio.addEventListener('ended',()=>{
-	let getText=repeatBtn.innertext;
+	let getText=repeatBtn.innerText;
 	if(getText=='repeat'){ nextMusic(); } //repeat, repeat-one, shuffle 등 구분용 조건문 -> switch로 하기
 });
