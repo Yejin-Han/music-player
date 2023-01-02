@@ -10,16 +10,22 @@ body{
 	height: 100%;
 	background: rgb(124, 5, 83);
 	background: linear-gradient(0deg, rgba(124,5,83,1) 0%, rgba(80,17,59,1) 32%, rgba(14,0,11,1) 100%);
-	display: flex; justify-content: center; align-items: center;
+	display: flex; justify-content: center; align-items: center;	
 	user-select: none; /* drag안되게 */
 }
-.play-body{
+.inner{
 	width: 380px;
-	padding: 25px 30px;
-	background: rgba(255,255,255,0.3); box-shadow: 3px 4px 8px 0 rgba(0,0,0,0.2);
+	padding: 25px 30px 70px;
+	background: rgba(0,0,0,0.5); box-shadow: 3px 4px 8px 0 rgba(0,0,0,0.2);
 	border-radius: 15px;
 }
-.m-top{ margin-bottom: 25px; }
+.play-body{
+}
+.m-top{
+	width: 100%;
+	margin-bottom: 25px;
+	position: relative;
+}
 .m-top>h2{
 	font-size: 30px; font-weight: 700;
 	text-align: center;
@@ -28,20 +34,28 @@ body{
 	background: linear-gradient(180deg, rgba(160,201,223,1) 0%, rgba(174,190,231,1) 47%, rgba(201,155,232,1) 100%);
 	background-clip: text; -webkit-background-clip: text;
 }
+.m-top>#toggle-btn{
+	position: absolute; left: 0; top: 50%;
+	transform: translateY(-50%);
+}
 .m-img{
 	width: 100%; height: 260px;
 	border-radius: 15px; overflow: hidden;
 }
 .m-img>img{ width: 100%; height: 100%; object-fit: cover; }
 .m-info{
-	margin: 30px;
+	margin: 30px 0 70px;
 	font-size: 20px; text-align: center;
 }
 .m-info>.name{ font-weight: 500; }
 .m-info>.artist{
-	font-size: 14px; font-weight: 300;
+	font-size: 12px; font-weight: 300;
 	color: rgba(255,255,255,0.6);
 	margin-top: 5px;
+}
+.m-etc{
+	display: flex; justify-content: space-between; align-items: center;
+	margin-bottom: 20px;
 }
 .m-progress{
 	width: 100%; height: 6px;

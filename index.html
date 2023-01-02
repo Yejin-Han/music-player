@@ -6,39 +6,51 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Music Player</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="play-body">
-				<div class="m-top">
-					<h2>Music Player</h2>
-				</div>
-				<div class="m-img">
-					<img src="images/album1.jpg" alt="앨범1">
-				</div>
-				<div class="m-info">
-					<p class="name">Alone</p>
-					<p class="artist">Color Out</p>
-				</div>
-				<div class="m-progress">
-					<div class="bar">
-						<audio src="" id="main-audio"></audio>
-					</div>
-					<div class="timer">
-						<span class="current">0:00</span>
-						<span class="duration">0:00</span>
+			<div class="inner">
+				<div class="play-header">
+					<div class="m-top">
+						<h2>Music Player</h2>
+						<span id="toggle-btn" class="material-symbols-rounded">expand_more</span>
 					</div>
 				</div>
-				<div class="m-control">
-					<span id="repeat-btn" class="material-icons">repeat</span>
-					<span id="prev-btn" class="material-icons">skip_previous</span>
-					<div class="play-pause">
-						<span id="play-btn" class="material-icons">play_arrow</span><!-- pause와 change -->
+				<div class="play-body">
+					<div class="m-img">
+						<img src="images/album1.jpg" alt="앨범1">
 					</div>
-					<span id="next-btn" class="material-icons">skip_next</span>
-					<span id="list-btn" class="material-icons">queue_music</span>
+					<div class="m-info">
+						<p class="name">Alone</p>
+						<p class="artist">Color Out</p>
+					</div>
+					<div class="m-etc">
+						<span id="list-btn" class="material-symbols-rounded">queue_music</span>
+						<span id="favorite-btn" class="material-symbols-rounded">favorite</span>
+						<span id="volume-btn" class="material-symbols-rounded">volume_off</span><!--volume_down, volume_up-->
+						<!-- <span id="add-btn" class="material-symbols-rounded">playlist_add</span>
+						아니면 메인은 음악 재생화면으로 하고 플레이리스트만 고르는걸 넣자. 그럼 왼쪽은 현재 플레이중인 리스트, 오른쪽은 전체 음악 플레이리스트로 두고 누르면 플레이리스트 모아놓은 화면으로 가기 -->
+					</div>
+					<div class="m-progress">
+						<div class="bar">
+							<audio src="" id="main-audio"></audio>
+						</div>
+						<div class="timer">
+							<span class="current">0:00</span>
+							<span class="duration">0:00</span>
+						</div>
+					</div>
+					<div class="m-control">
+						<span id="shuffle-btn" class="material-symbols-rounded">shuffle</span></span><!--shuffle_on-->
+						<span id="prev-btn" class="material-symbols-rounded">skip_previous</span>
+						<div class="play-pause">
+							<span id="play-btn" class="material-symbols-rounded">play_arrow</span><!-- pause와 change -->
+						</div>
+						<span id="next-btn" class="material-symbols-rounded">skip_next</span>
+						<span id="repeat-btn" class="material-symbols-rounded">repeat</span><!--repeat_one-->
+					</div>
 				</div>
 			</div>
 		</div>
