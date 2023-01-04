@@ -29,7 +29,16 @@
 					<div class="m-etc">
 						<span id="list-btn" class="material-symbols-rounded">queue_music</span>
 						<span id="favorite-btn" class="material-symbols-rounded">favorite</span>
-						<span id="volume-btn" class="material-symbols-rounded">volume_off</span><!--volume_down, volume_up-->
+						<div class="volume">
+							<span id="volume-btn" class="material-symbols-rounded">volume_up</span><!--volume_down, volume_up, volume_off-->
+							<div id="volume-ctrl" class="hidden">
+								<div class="slider" data-direction="horizontal">
+									<div class="prog">
+										<div class="pin" data-method="rewind"></div>
+									</div>
+								</div>
+							</div>
+						</div>
 						<!-- <span id="add-btn" class="material-symbols-rounded">playlist_add</span>
 						아니면 메인은 음악 재생화면으로 하고 플레이리스트만 고르는걸 넣자. 그럼 왼쪽은 현재 플레이중인 리스트, 오른쪽은 전체 음악 플레이리스트로 두고 누르면 플레이리스트 모아놓은 화면으로 가기 -->
 					</div>

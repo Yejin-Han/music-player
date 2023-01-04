@@ -4,6 +4,7 @@ const playBtn=musicWrap.querySelector('#play-btn');
 const prevBtn=musicWrap.querySelector('#prev-btn');
 const nextBtn=musicWrap.querySelector('#next-btn');
 const repeatBtn=musicWrap.querySelector('#repeat-btn');
+const shuffleBtn=musicWrap.querySelector('#shuffle-btn');
 let list_index=0; //musicList[0] ~ musicList[5] 순환 호출
 const albumArt=musicWrap.querySelector('.m-img>img');
 const musicName=musicWrap.querySelector('.name');
@@ -12,7 +13,10 @@ const progress=musicWrap.querySelector('.m-progress');
 const progressBar=progress.querySelector('.bar');
 const playTime=progress.querySelector('.current');
 const totTime=progress.querySelector('.duration');
-
+const volumeBtn=musicWrap.querySelector('#volume-btn');
+const volumeCtrl=musicWrap.querySelector('#volume-ctrl');
+const slider=musicWrap.querySelector('.slider');
+const volumeProg=musicWrap.querySelector('.prog');
 //음악 재생
 const playMusic=()=>{
 	playBtn.innerHTML="pause";
@@ -59,6 +63,69 @@ musicAudio.addEventListener('timeupdate',(e)=>{
 		totTime.innerHTML=`${totMin}:${totSec}`;
 	});
 });
+//재생 바 특정 위치 클릭 시
+progress.addEventListener('click',(e)=>{
+	let maxWidth=progress.clientWidth;
+	let clickXpos=e.offsetX;
+	let totDuration=musicAudio.duration;
+	musicAudio.currentTime=(clickXpos/maxWidth)*totDuration;
+	playMusic();
+});
+//반복버튼 클릭 시
+repeatBtn.addEventListener('click',()=>{
+	let getTextRepeat=repeatBtn.innerText;
+	switch(getTextRepeat){
+		case 'repeat':
+			repeatBtn.innerText='repeat_one';
+			repeatBtn.setAttribute('title','한곡 반복');
+			break;
+		case 'repeat_one':
+			repeatBtn.innerText='repeat';
+			repeatBtn.setAttribute('title','전체 반복');
+			break;
+	}
+});
+//셔플버튼 클릭 시
+shuffleBtn.addEventListener('click',()=>{
+	let getTextShuffle=shuffleBtn.innerText;
+	switch(getTextShuffle){
+		case 'shuffle':
+			shuffleBtn.innerText='shuffle_on';
+			shuffleBtn.setAttribute('title','랜덤 반복');
+			break;
+		case 'shuffle_on':
+			shuffleBtn.innerText='shuffle';
+			shuffleBtn.setAttribute('title','순서대로 반복');
+			break;
+	}
+});
+//음악 재생 끝날 때
+musicAudio.addEventListener('ended',()=>{
+	let getTextRepeat=repeatBtn.innerText;
+	switch(getTextRepeat){
+		case 'repeat':
+			nextMusic();
+			break;
+		case 'repeat_one': //shuffle이 켜져 있을 때만 작동됨.. 왜지
+			playMusic();
+			break;
+	}
+	let getTextShuffle=shuffleBtn.innerText;
+	switch(getTextShuffle){
+		case 'shuffle':
+			nextMusic();
+			break;
+		case 'shuffle_on':
+			let randomIndex=Math.floor(Math.random()*musicList.length+1);
+			do{
+				randomIndex=Math.floor(Math.random()*musicList.length + 1);
+			} while(list_index==randomIndex);
+			list_index=randomIndex;
+			loadMusic(list_index);
+			playMusic();
+			break;
+	}
+});
 //이전 곡 버튼 클릭 시
 const prevMusic=()=>{
 	list_index--;
@@ -75,15 +142,16 @@ const nextMusic=()=>{
 }
 nextBtn.addEventListener('click',()=>{ nextMusic(); });
 prevBtn.addEventListener('click',()=>{ prevMusic(); });
-//재생 바 특정 위치 클릭 시
-progress.addEventListener('click',(e)=>{
-	let maxWidth=progress.clientWidth;
-	let clickXpos=e.offsetX;
-	let totDuration=musicAudio.duration;
-	musicAudio.currentTime=(clickXpos/maxWidth)*totDuration;
-	playMusic();
+//볼륨 조절 (드래그 때문에 모르겠다. 허허)
+volumeBtn.addEventListener('click',()=>{
+	volumeBtn.classList.toggle('open');
+	volumeCtrl.classList.toggle('hidden');
 });
-musicAudio.addEventListener('ended',()=>{
-	let getText=repeatBtn.innerText;
-	if(getText=='repeat'){ nextMusic(); } //repeat, repeat-one, shuffle 등 구분용 조건문 -> switch로 하기
+let pin=slider.querySelector('.pin');
+slider.addEventListener('click',window[pin.dataset.method]);
+musicAudio.addEventListener('volumechange',()=>{
+	volumeProg.style.height = musicAudio.volume*100+'%';
 });
+const draggable=()=>{
+
+}
