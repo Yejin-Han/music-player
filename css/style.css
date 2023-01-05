@@ -1,11 +1,23 @@
 @charset 'utf-8';
 
-body,div,h2,p,audio{ margin: 0; padding: 0; }
+body,div,h2,p,audio,ul,li{ margin: 0; padding: 0; }
+ul{ list-style: none; }
 body{
 	font-family: 'Poppins', sans-serif;
 	height: 100vh;
 	color: #fff;
 }
+/* scroll */
+::-webkit-scrollbar{ width: 10px; height: 100%; }
+::-webkit-scrollbar-thumb{
+	background: #fff;
+	border-radius: 20px;
+}
+::-webkit-scrollbar-track{
+	background: rgba(255,255,255,0.6);
+  border-radius: 20px;
+}
+
 .wrapper{
 	height: 100%;
 	background: rgb(124, 5, 83);
@@ -19,8 +31,7 @@ body{
 	background: rgba(0,0,0,0.5); box-shadow: 3px 4px 8px 0 rgba(0,0,0,0.2);
 	border-radius: 15px;
 }
-.play-body{
-}
+.play-body{ position: relative; }
 .m-top{
 	width: 100%;
 	margin-bottom: 25px;
@@ -58,6 +69,35 @@ body{
 	margin-bottom: 20px;
 	color: rgba(255,255,255,0.6);
 }
+.m-etc>#play-list{
+	width: 100%; height: 380px;
+	position: absolute; left: 0; top: 0;
+	background: #222;
+	display: none;
+}
+.m-etc>#play-list>ul{
+	height: 380px;
+	padding: 20px; box-sizing: border-box;
+	overflow-y: scroll;
+}
+.m-etc>#play-list li{
+	border-bottom: 1px solid rgba(255,255,255,0.3);
+	padding: 5px 0; box-sizing: border-box;
+	position: relative;
+}
+.m-etc>#play-list li:last-child{ border-bottom: 0; }
+.m-etc>#play-list li.active{ color: #EAC7C7; }
+.m-etc>#play-list li>strong{
+	display: block;
+	margin-bottom: 4px;
+}
+.m-etc>#play-list li>em{
+	font-style: normal; font-size: 12px;
+	color: rgba(255,255,255,0.6);
+}
+.m-etc>#play-list li>span{ position: absolute; right: 0; top: 5px; }
+.m-etc>#list-btn.active{ color: #fff; }
+.m-etc>#list-btn.active+#play-list{ display: block; }
 .m-etc>.volume{ position: relative; }
 .m-etc #volume-btn.open{ color: rgba(255,255,255,1); }
 .m-etc #volume-ctrl{
@@ -110,11 +150,8 @@ body{
 	margin-top: 40px;
 	display: flex; justify-content: space-between; align-items: center;
 }
-.m-control>span{
-	font-size: 32px; color: transparent;
-	background: rgb(124, 5, 83);
-	background: linear-gradient(180deg, rgba(124,5,83,1) 0%, rgba(80,17,59,1) 32%, rgba(14,0,11,1) 100%);
-	background-clip: text; -webkit-background-clip: text;
+.m-control span{
+	font-size: 32px; color: #fff;
 }
 .m-control .play-pause{
 	width: 54px; height: 54px;
