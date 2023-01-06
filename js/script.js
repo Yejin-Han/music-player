@@ -10,6 +10,7 @@ const repeatBtn=musicWrap.querySelector('#repeat-btn');
 const shuffleBtn=musicWrap.querySelector('#shuffle-btn');
 const progress=musicWrap.querySelector('.m-progress');
 const progressBar=progress.querySelector('.bar');
+const progressPin=progress.querySelector('.bar>.pin');
 const playTime=progress.querySelector('.current');
 const totTime=progress.querySelector('.duration');
 const listBtn=musicWrap.querySelector('#list-btn');
@@ -21,6 +22,7 @@ const volumeCtrl=musicWrap.querySelector('#volume-ctrl');
 const slider=musicWrap.querySelector('.slider');
 const volumeProg=musicWrap.querySelector('.prog');
 let list_index=0; //musicList[0] ~ musicList[5] 순환 호출
+musicAudio.volume=0.5;
 
 //음악 및 음악 정보 불러오기(music_list.js 활용)
 const loadMusic=(num)=>{
@@ -69,6 +71,7 @@ musicAudio.addEventListener('timeupdate',(e)=>{
 	let duration=e.target.duration;
 	let progressRatio=(curr/duration)*100;
 	progressBar.style.width=`${progressRatio}%`;
+	progressPin.style.left=`${96.5}%`;
 	//재생시간 표시
 	let currMin=Math.floor(curr/60);
 	let currSec=Math.floor(curr%60);
@@ -90,6 +93,7 @@ progress.addEventListener('click',(e)=>{
 	let totDuration=musicAudio.duration;
 	musicAudio.currentTime=(clickXpos/maxWidth)*totDuration;
 	playMusic();
+	progressPin.style.left=`${96.5}%`;
 });
 //반복버튼 클릭 시
 repeatBtn.addEventListener('click',()=>{
@@ -126,7 +130,7 @@ musicAudio.addEventListener('ended',()=>{
 		case 'repeat':
 			nextMusic();
 			break;
-		case 'repeat_one': //shuffle이 켜져 있을 때만 작동됨.. 왜지
+		case 'repeat_one':
 			loadMusic(list_index);
 			playMusic();
 			break;
@@ -134,16 +138,19 @@ musicAudio.addEventListener('ended',()=>{
 	let getTextShuffle=shuffleBtn.innerText;
 	switch(getTextShuffle){
 		case 'shuffle':
-			nextMusic();
-			break;
-		case 'shuffle_on':
-			let randomIndex=Math.floor(Math.random()*musicList.length);
-			do{
-				randomIndex=Math.floor(Math.random()*musicList.length);
-			} while(list_index==randomIndex);
-			list_index=randomIndex;
 			loadMusic(list_index);
 			playMusic();
+			break;
+		case 'shuffle_on':
+			if(getTextRepeat=='repeat'){
+				let randomIndex=Math.floor(Math.random()*musicList.length);
+				do{
+					randomIndex=Math.floor(Math.random()*musicList.length);
+				} while(list_index==randomIndex);
+				list_index=randomIndex;
+				loadMusic(list_index);
+				playMusic();
+			}
 			break;
 	}
 	playListMusic();
@@ -153,14 +160,10 @@ volumeBtn.addEventListener('click',()=>{
 	volumeBtn.classList.toggle('open');
 	volumeCtrl.classList.toggle('hidden');
 });
-let pin=slider.querySelector('.pin');
 slider.addEventListener('click',window[pin.dataset.method]);
 musicAudio.addEventListener('volumechange',()=>{
 	volumeProg.style.height = musicAudio.volume*100+'%';
 });
-const draggable=()=>{
-
-}
 
 //플레이리스트 버튼 클릭 시
 listBtn.addEventListener('click',function(){

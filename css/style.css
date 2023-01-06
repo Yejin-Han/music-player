@@ -8,7 +8,7 @@ body{
 	color: #fff;
 }
 /* scroll */
-::-webkit-scrollbar{ width: 10px; height: 100%; }
+::-webkit-scrollbar{ width: 6px; height: 100%; }
 ::-webkit-scrollbar-thumb{
 	background: #fff;
 	border-radius: 20px;
@@ -72,7 +72,7 @@ body{
 .m-etc>#play-list{
 	width: 100%; height: 380px;
 	position: absolute; left: 0; top: 0;
-	background: #222;
+	background: rgba(0,0,0,0.8);
 	display: none;
 }
 .m-etc>#play-list>ul{
@@ -86,7 +86,6 @@ body{
 	position: relative;
 }
 .m-etc>#play-list li:last-child{ border-bottom: 0; }
-.m-etc>#play-list li.active{ color: #EAC7C7; }
 .m-etc>#play-list li>strong{
 	display: block;
 	margin-bottom: 4px;
@@ -95,6 +94,7 @@ body{
 	font-style: normal; font-size: 12px;
 	color: rgba(255,255,255,0.6);
 }
+.m-etc>#play-list li.active,.m-etc>#play-list li.active>em{ color: #f8b6b6; }
 .m-etc>#play-list li>span{ position: absolute; right: 0; top: 5px; }
 .m-etc>#list-btn.active{ color: #fff; }
 .m-etc>#list-btn.active+#play-list{ display: block; }
@@ -108,29 +108,40 @@ body{
 	display: flex; flex-flow: column wrap; align-items: center;
 }
 .m-etc #volume-ctrl.hidden{ display: none; }
-.m-etc .slider{
-	width: 6px;
-	margin: 12px 0;
+.m-etc .volumebg{
+	width: 6px; height: 90%;
+	margin: auto;
 	border-radius: 3px;
 	background: rgba(255,255,255,0.4);
-	flex-grow: 1;
-	position: relative;
+	position: absolute; left: 50%; top: 50%;
+	transform: translate(-50%,-50%);
 }
-.m-etc .prog{
-	width: 100%; height: 50%;
+.m-etc .volumerange{
+	position: absolute; left: 0; top: 0;
+	direction: rtl;
+	background: transparent;
+	transform-origin: center left;
+	transform: rotate(90deg);
+}
+.m-etc .bar{
+	width: 6px; height: 0%;
 	background: #fff;
 	border-radius: inherit;
 	position: absolute; bottom: 0;
 	pointer-events: none;
 }
-.m-etc .pin{
+/* .pin{
+	display: block;
 	width: 16px; height: 16px;
 	border-radius: 50%;
 	background: #fff;
-	position: absolute; left: -5px; top: -8px;
+	position: absolute;
 	pointer-events: all;
 	box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.3);
 }
+.m-etc .pin{
+	left: -5px; top: -8px;
+} */
 .m-progress{
 	width: 100%; height: 6px;
 	border-radius: 3px;
@@ -139,7 +150,12 @@ body{
 .m-progress>.bar{
 	width: 0%; height: inherit;
 	border-radius: inherit;
-	background: #fff;
+	background: rgb(191,182,160);
+	background: linear-gradient(90deg, rgba(238,213,62,1) 0%, rgba(191,182,160,1) 50%, rgba(99,111,163,1) 100%);
+	position: relative;
+}
+.m-progress .pin{
+	left: -1%; top: -5px;
 }
 .m-progress>.timer{
 	margin-top: 5px;
@@ -155,8 +171,8 @@ body{
 }
 .m-control .play-pause{
 	width: 54px; height: 54px;
-	background: rgb(124, 5, 83);
-	background: linear-gradient(180deg, rgba(124,5,83,0.7) 0%, rgba(80,17,59,0.7) 32%, rgba(14,0,11,0.7) 100%);
+	background: rgb(191,182,160);
+	/* background: linear-gradient(180deg, rgba(238,213,62,1) 0%, rgba(191,182,160,1) 50%, rgba(99,111,163,1) 100%); */
 	border-radius: 50%;
 	display: flex; justify-content: center; align-items: center;
 }
