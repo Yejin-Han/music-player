@@ -1,8 +1,12 @@
 const musicWrap=document.querySelector('.wrapper');
+const bodyWrap=musicWrap.querySelector('.img_info_wrap');
 const musicAudio=musicWrap.querySelector('#main-audio');
+const imgWrap=musicWrap.querySelector('.m-img');
 const albumArt=musicWrap.querySelector('.m-img>img');
 const musicName=musicWrap.querySelector('.name');
 const musicArtist=musicWrap.querySelector('.artist');
+const musicLyrics=musicWrap.querySelector('.m-lyrics');
+const toggleBtn=musicWrap.querySelector('#toggle-btn');
 const playBtn=musicWrap.querySelector('#play-btn');
 const prevBtn=musicWrap.querySelector('#prev-btn');
 const nextBtn=musicWrap.querySelector('#next-btn');
@@ -29,6 +33,9 @@ const loadMusic=(num)=>{
 	musicAudio.src=`songs/${musicList[num].audio}.mp3`;
 	musicName.innerHTML=musicList[num].name;
 	musicArtist.innerHTML=musicList[num].artist;
+	musicLyrics.innerHTML=musicList[num].lyrics;
+	musicLyrics.scrollTop=0;
+	imgWrap.style.transform='scale(1)';
 }
 
 //음악 재생
@@ -43,9 +50,14 @@ const pauseMusic=()=>{
 	musicAudio.pause();
 }
 //재생(일시정지)버튼 클릭 시
-playBtn.addEventListener('click',()=>{
+playBtn.addEventListener('click',(e)=>{
 	let getText=playBtn.innerText;
 	(getText=="pause")? pauseMusic() : playMusic();
+	if(e.target.innerHTML=='pause'){
+		imgWrap.style.transform='scale(1)';
+	} else{
+		imgWrap.style.transform='scale(0.8)';
+	}
 });
 
 //이전 곡 버튼 클릭 시
@@ -97,6 +109,17 @@ progress.addEventListener('click',(e)=>{
 	musicAudio.currentTime=(clickXpos/maxWidth)*totDuration;
 	playMusic();
 	progressPin.style.left=`${96.5}%`;
+});
+
+//toggle btn 클릭 시 가사, 플레이리스트 끄기
+toggleBtn.addEventListener('click',()=>{
+	musicLyrics.classList.remove('active');
+	listBtn.classList.remove('active');
+});
+
+//가사 띄우기
+bodyWrap.addEventListener('click',()=>{
+	musicLyrics.classList.toggle('active');
 });
 
 //반복버튼 클릭 시
@@ -162,15 +185,6 @@ musicAudio.addEventListener('ended',()=>{
 	playListMusic();
 });
 
-//볼륨 조절 (드래그 때문에 모르겠다. 허허)
-volumeBtn.addEventListener('click',()=>{
-	volumeBtn.classList.toggle('open');
-	volumeCtrl.classList.toggle('hidden');
-});
-volumeRange.addEventListener('change',()=>{
-	musicAudio.volume=volumeRange.value/100;
-});
-
 //플레이리스트 버튼 클릭 시
 listBtn.addEventListener('click',function(){
 	this.classList.toggle('active');
@@ -213,7 +227,7 @@ const playListMusic=()=>{
 			playListAll[i].classList.add('active');
 			audioTag.innerHTML='Playing';
 		}
-		/* playListAll[i].addEventListener('click',(e)=>clicked(e.target)); */
+		/* playListAll[i].addEventListener('click',(e)=>clicked(e.target)); //느리다 */
 		playListAll[i].setAttribute('onclick','clicked(this)');
 	}
 }
@@ -224,6 +238,29 @@ const clicked=(elem)=>{
 	playMusic();
 	playListMusic();
 }
+
+//하트 클릭 시 애니메이션 클래스 추가 //하트 누른걸 객체 index마다 저장하는 법??
+favoriteBtn.addEventListener('click',(e)=>{
+	e.target.classList.toggle('active');
+});
+
+//볼륨 조절
+volumeBtn.addEventListener('click',(e)=>{
+	e.target.classList.toggle('open');
+	volumeCtrl.classList.toggle('hidden');
+});
+volumeRange.addEventListener('change',()=>{
+	let oriVol=musicAudio.volume;
+	musicAudio.volume=volumeRange.value/100;
+	let currVol=musicAudio.volume;
+	if(currVol==0){
+		volumeBtn.innerHTML='volume_off';
+	} else if(oriVol<=currVol){
+		volumeBtn.innerHTML='volume_up';
+	} else{
+		volumeBtn.innerHTML='volume_down';
+	}
+});
 
 //loadeddata를 인식하기 위함.
 window.addEventListener('load',()=>{

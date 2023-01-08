@@ -5,8 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Music Player</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200,1,0" />
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -19,19 +18,24 @@
 					</div>
 				</div>
 				<div class="play-body">
-					<div class="m-img">
-						<img src="images/album1.jpg" alt="앨범1">
-					</div>
-					<div class="m-info">
-						<p class="name">Alone</p>
-						<p class="artist">Color Out</p>
+					<div class="img_info_wrap">
+						<div class="m-img">
+							<img src="images/album1.jpg" alt="앨범1">
+						</div>
+						<div class="m-info">
+							<p class="name">Alone</p>
+							<p class="artist">Color Out</p>
+						</div>
+						<div class="m-lyrics">
+
+						</div>
 					</div>
 					<div class="m-etc">
 						<span id="list-btn" class="material-symbols-rounded">queue_music</span>
 						<div id="play-list">
 							<ul></ul>
 						</div>
-						<span id="favorite-btn" class="material-symbols-rounded">favorite</span>
+						<span id="favorite-btn"></span>
 						<div class="volume">
 							<span id="volume-btn" class="material-symbols-rounded">volume_up</span><!--volume_down, volume_up, volume_off-->
 							<div id="volume-ctrl" class="hidden">
@@ -41,8 +45,6 @@
 								</div>
 							</div>
 						</div>
-						<!-- <span id="add-btn" class="material-symbols-rounded">playlist_add</span>
-						아니면 메인은 음악 재생화면으로 하고 플레이리스트만 고르는걸 넣자. 그럼 왼쪽은 현재 플레이중인 리스트, 오른쪽은 전체 음악 플레이리스트로 두고 누르면 플레이리스트 모아놓은 화면으로 가기 -->
 					</div>
 					<div class="m-progress">
 						<div class="bar">
@@ -58,7 +60,7 @@
 						<span id="shuffle-btn" class="material-symbols-rounded">shuffle</span></span><!--shuffle_on-->
 						<span id="prev-btn" class="material-symbols-rounded">skip_previous</span>
 						<div class="play-pause">
-							<span id="play-btn" class="material-symbols-rounded">play_arrow</span><!-- pause와 change -->
+							<span id="play-btn" class="material-symbols-rounded">play_arrow</span><!--pause-->
 						</div>
 						<span id="next-btn" class="material-symbols-rounded">skip_next</span>
 						<span id="repeat-btn" class="material-symbols-rounded">repeat</span><!--repeat_one-->
@@ -68,5 +70,6 @@
 		</div>
 		<script src="js/music_list.js"></script>
 		<script src="js/script.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
 	</body>
 </html>
