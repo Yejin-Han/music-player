@@ -40,14 +40,20 @@ body{
 	background: linear-gradient(-45deg, #fff6b7, #f092bc, #8795e6, #c2ffd8);
   background-size: 400% 400%;
 	animation: AnimationName 15s ease infinite;
-	display: flex; justify-content: center; align-items: center;	
+	display: flex; justify-content: center; align-items: center;
 	user-select: none; /* drag안되게 */
+	position: relative;
+}
+.bg{
+	width: 464px; height: 832px;
+	background: url('../images/phone.png') no-repeat;
+	display: flex; justify-content: center; align-items: center;
 }
 .inner{
-	width: 380px;
-	padding: 25px 30px 70px;
-	background: rgba(0,0,0,0.5); box-shadow: 3px 4px 8px 0 rgba(0,0,0,0.2);
-	border-radius: 15px;
+	width: 350px;
+	padding: 50px 30px 80px;
+	background: rgba(0,0,0,0.5);
+	border-radius: 40px;
 }
 .play-body{ position: relative; }
 .m-top{
@@ -234,8 +240,4 @@ body{
 	background: rgba(255,255,255,0.2);
 	border-radius: 50%;
 	display: flex; justify-content: center; align-items: center;
-}
-
-@media screen and (max-width: 768px){
-	.inner{ width: 60vw; height: 70vh; }
 }

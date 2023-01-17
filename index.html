@@ -10,60 +10,62 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="inner">
-				<div class="play-header">
-					<div class="m-top">
-						<h2>Music Player</h2>
-						<span id="toggle-btn" class="material-symbols-rounded">expand_more</span>
+			<div class="bg">
+				<div class="inner">
+					<div class="play-header">
+						<div class="m-top">
+							<h2>Music Player</h2>
+							<span id="toggle-btn" class="material-symbols-rounded">expand_more</span>
+						</div>
 					</div>
-				</div>
-				<div class="play-body">
-					<div class="img_info_wrap">
-						<div class="m-img">
-							<img src="images/album1.jpg" alt="앨범1">
-						</div>
-						<div class="m-info">
-							<p class="name">Alone</p>
-							<p class="artist">Color Out</p>
-						</div>
-						<div class="m-lyrics">
+					<div class="play-body">
+						<div class="img_info_wrap">
+							<div class="m-img">
+								<img src="images/album1.jpg" alt="앨범1">
+							</div>
+							<div class="m-info">
+								<p class="name">Alone</p>
+								<p class="artist">Color Out</p>
+							</div>
+							<div class="m-lyrics">
 
+							</div>
 						</div>
-					</div>
-					<div class="m-etc">
-						<span id="list-btn" class="material-symbols-rounded">queue_music</span>
-						<div id="play-list">
-							<ul></ul>
-						</div>
-						<span id="favorite-btn"></span>
-						<div class="volume">
-							<span id="volume-btn" class="material-symbols-rounded">volume_up</span><!--volume_down, volume_up, volume_off-->
-							<div id="volume-ctrl" class="hidden">
-								<div class="volumebg">
-									<span class="bar"></span>
-									<input type='range' min='0' max='100' value='50' step='1' class="volumerange"/>
+						<div class="m-etc">
+							<span id="list-btn" class="material-symbols-rounded">queue_music</span>
+							<div id="play-list">
+								<ul></ul>
+							</div>
+							<span id="favorite-btn"></span>
+							<div class="volume">
+								<span id="volume-btn" class="material-symbols-rounded">volume_up</span><!--volume_down, volume_up, volume_off-->
+								<div id="volume-ctrl" class="hidden">
+									<div class="volumebg">
+										<span class="bar"></span>
+										<input type='range' min='0' max='100' value='50' step='1' class="volumerange"/>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="m-progress">
-						<div class="bar">
-							<span class="pin"></span>
-							<audio src="" id="main-audio"></audio>
+						<div class="m-progress">
+							<div class="bar">
+								<span class="pin"></span>
+								<audio src="" id="main-audio"></audio>
+							</div>
+							<div class="timer">
+								<span class="current">0:00</span>
+								<span class="duration">0:00</span>
+							</div>
 						</div>
-						<div class="timer">
-							<span class="current">0:00</span>
-							<span class="duration">0:00</span>
+						<div class="m-control">
+							<span id="shuffle-btn" class="material-symbols-rounded">shuffle</span></span><!--shuffle_on-->
+							<span id="prev-btn" class="material-symbols-rounded">skip_previous</span>
+							<div class="play-pause">
+								<span id="play-btn" class="material-symbols-rounded">play_arrow</span><!--pause-->
+							</div>
+							<span id="next-btn" class="material-symbols-rounded">skip_next</span>
+							<span id="repeat-btn" class="material-symbols-rounded">repeat</span><!--repeat_one-->
 						</div>
-					</div>
-					<div class="m-control">
-						<span id="shuffle-btn" class="material-symbols-rounded">shuffle</span></span><!--shuffle_on-->
-						<span id="prev-btn" class="material-symbols-rounded">skip_previous</span>
-						<div class="play-pause">
-							<span id="play-btn" class="material-symbols-rounded">play_arrow</span><!--pause-->
-						</div>
-						<span id="next-btn" class="material-symbols-rounded">skip_next</span>
-						<span id="repeat-btn" class="material-symbols-rounded">repeat</span><!--repeat_one-->
 					</div>
 				</div>
 			</div>
